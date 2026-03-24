@@ -57,7 +57,7 @@ print("  TEST SET EVALUATION")
 print("=" * 55)
 print(f"Accuracy : {accuracy_score(y_test, y_pred):.4f}")
 print("\nClassification Report:")
-print(classification_report(y_test, y_pred, target_names=["High", "Low", "Mid"]))
+print(classification_report(y_test, y_pred, target_names=["High", "Low", "Medium"]))
 
 y_unseen_pred = svm_model.predict(X_unseen_scaled)
 
@@ -66,12 +66,12 @@ print("  UNSEEN DATA EVALUATION")
 print("=" * 55)
 print(f"Accuracy : {accuracy_score(y_unseen, y_unseen_pred):.4f}")
 print("\nClassification Report:")
-print(classification_report(y_unseen, y_unseen_pred, target_names=["High", "Low", "Mid"]))
+print(classification_report(y_unseen, y_unseen_pred, target_names=["High", "Low", "Medium"]))
 
 # ──────────────────────────────────────────────
 # CONFUSION MATRIX PLOT (Test Set)
 # ──────────────────────────────────────────────
-labels = ["High", "Low", "Mid"]
+labels = ["High", "Low", "Medium"]
 cm = confusion_matrix(y_test, y_pred, labels=labels)
 
 fig, axes = plt.subplots(1, 2, figsize=(14, 5))
@@ -85,7 +85,7 @@ axes[0].set_xlabel("Predicted")
 axes[0].set_ylabel("Actual")
 
 # Class distribution comparison
-class_order = ["Low", "Mid", "High"]
+class_order = ["Low", "Medium", "High"]
 train_counts = train_df["Performance"].value_counts().reindex(class_order)
 test_counts = test_df["Performance"].value_counts().reindex(class_order)
 unseen_counts = unseen_df["Performance"].value_counts().reindex(class_order)
